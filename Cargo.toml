@@ -1,0 +1,21 @@
+[package]
+name = "thumbgen"
+version = "0.1.0"
+edition = "2021"
+authors = ["Daiki Nakashima <daiki48.engineer@gmail.com>"]
+description = "Thumbnail generate tool"
+repository = "https://github.com/Daiki48/thumbgen"
+license-file = ""
+readme = "README.md"
+keywords = ["cli"]
+
+[dependencies]
+ab_glyph = "0.2.29"
+clap = { version = "4.5.27", features = ["derive"] }
+image = "0.25.5"
+imageproc = "0.25.0"
+rusttype = "0.9.3"
+serde = { version = "1.0.217", features = ["derive"] }
+textwrap = "0.16.1"
+thiserror = "2.0.11"
+toml = "0.8.19"
