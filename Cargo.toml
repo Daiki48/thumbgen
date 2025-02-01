@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["Daiki Nakashima <daiki48.engineer@gmail.com>"]
 description = "Thumbnail generate tool"
 repository = "https://github.com/Daiki48/thumbgen"
-license-file = ""
+license-file = "LICENSE"
 readme = "README.md"
 keywords = ["cli"]
 
