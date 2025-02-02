@@ -1,12 +1,24 @@
 #[derive(serde::Deserialize)]
 pub struct Config {
     pub metas: Metas,
+    pub design: Design,
 }
 
 #[derive(serde::Deserialize)]
 pub struct Metas {
     pub title: String,
     pub username: String,
+}
+
+#[derive(serde::Deserialize)]
+pub struct Design {
+    pub background_color: [u8; 4],
+}
+
+impl Design {
+    pub fn get_rgba_background_color(&self) -> image::Rgba<u8> {
+        image::Rgba(self.background_color)
+    }
 }
 
 pub const OUTPUT_DIR: &str = ".thumbgen";
@@ -16,6 +28,9 @@ pub const TOML_DEFAULT: &str = r#"
 [metas]
 title = 'Hello. I love Rust language. Rust is best for programming. I writing Rust at thumbgen. My Github username is Daiki48.'
 username = 'Daiki48'
+
+[design]
+background_color = [34, 39, 46, 255]
 "#;
 
 pub fn load_config() -> Result<Config, crate::error::ThumbnailError> {
