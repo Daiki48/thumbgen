@@ -39,7 +39,12 @@ fn init() -> Result<(), error::ThumbnailError> {
 fn create() -> Result<(), error::ThumbnailError> {
     let config = config::load_config()?;
     let font = font::load_font()?;
-    image_process::generate_thumbnail(&config.metas.title, &config.metas.username, &font)?;
+    image_process::generate_thumbnail(
+        &config.metas.title,
+        &config.metas.username,
+        config.design.get_rgba_background_color(),
+        &font,
+    )?;
     println!("Finished");
 
     Ok(())

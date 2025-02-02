@@ -15,6 +15,7 @@ const FULL_SIZE_FILE_NAME: &str = "thumbgen_1200_630.png";
 pub fn generate_thumbnail(
     title: &str,
     username: &str,
+    background_color: image::Rgba<u8>,
     font: &ab_glyph::FontRef,
 ) -> Result<(), crate::error::ThumbnailError> {
     let background_width = BACKGROUND_WIDTH_SIZE;
@@ -36,7 +37,7 @@ pub fn generate_thumbnail(
     imageproc::drawing::draw_filled_rect_mut(
         &mut img,
         imageproc::rect::Rect::at(0, 0).of_size(background_width, background_height),
-        BACKGROUND_COLOR,
+        background_color,
     );
 
     imageproc::drawing::draw_filled_rect_mut(
