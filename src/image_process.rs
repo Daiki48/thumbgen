@@ -8,7 +8,7 @@ pub const BOX_COLOR: image::Rgba<u8> = image::Rgba([55, 63, 74, 255]);
 
 pub const TITLE_FONT_SIZE: f32 = 52.0;
 pub const USERNAME_FONT_SIZE: f32 = 38.0;
-pub const FONT_COLOR: image::Rgba<u8> = image::Rgba([202u8, 204u8, 202u8, 255u8]);
+pub const FONT_COLOR: image::Rgba<u8> = image::Rgba([202, 204, 202, 255]);
 
 const FULL_SIZE_FILE_NAME: &str = "thumbgen_1200_630.png";
 
@@ -16,6 +16,7 @@ pub fn generate_thumbnail(
     title: &str,
     username: &str,
     background_color: image::Rgba<u8>,
+    font_color: image::Rgba<u8>,
     font: &ab_glyph::FontRef,
 ) -> Result<(), crate::error::ThumbnailError> {
     let background_width = BACKGROUND_WIDTH_SIZE;
@@ -54,7 +55,7 @@ pub fn generate_thumbnail(
     for line in wrapped_title {
         imageproc::drawing::draw_text_mut(
             &mut img,
-            FONT_COLOR,
+            font_color,
             title_text_position_x,
             title_text_position_y,
             title_scale,
@@ -66,7 +67,7 @@ pub fn generate_thumbnail(
 
     imageproc::drawing::draw_text_mut(
         &mut img,
-        FONT_COLOR,
+        font_color,
         username_text_position_x,
         username_text_position_y,
         username_scale,

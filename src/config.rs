@@ -13,11 +13,16 @@ pub struct Metas {
 #[derive(serde::Deserialize)]
 pub struct Design {
     pub background_color: [u8; 4],
+    pub font_color: [u8; 4],
 }
 
 impl Design {
     pub fn get_rgba_background_color(&self) -> image::Rgba<u8> {
         image::Rgba(self.background_color)
+    }
+
+    pub fn get_rgba_font_color(&self) -> image::Rgba<u8> {
+        image::Rgba(self.font_color)
     }
 }
 
@@ -31,6 +36,7 @@ username = 'Daiki48'
 
 [design]
 background_color = [34, 39, 46, 255]
+font_color = [202, 204, 202, 255]
 "#;
 
 pub fn load_config() -> Result<Config, crate::error::ThumbnailError> {
