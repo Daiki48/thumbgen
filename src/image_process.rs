@@ -1,6 +1,5 @@
 pub const BACKGROUND_WIDTH_SIZE: u32 = 1200;
 pub const BACKGROUND_HEIGHT_SIZE: u32 = 630;
-pub const BACKGROUND_COLOR: image::Rgba<u8> = image::Rgba([34, 39, 46, 255]);
 
 pub const BOX_WIDTH_SIZE: u32 = 1140;
 pub const BOX_HEIGHT_SIZE: u32 = 600;
@@ -8,7 +7,6 @@ pub const BOX_COLOR: image::Rgba<u8> = image::Rgba([55, 63, 74, 255]);
 
 pub const TITLE_FONT_SIZE: f32 = 52.0;
 pub const USERNAME_FONT_SIZE: f32 = 38.0;
-pub const FONT_COLOR: image::Rgba<u8> = image::Rgba([202, 204, 202, 255]);
 
 const FULL_SIZE_FILE_NAME: &str = "thumbgen_1200_630.png";
 
