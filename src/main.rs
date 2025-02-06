@@ -43,6 +43,7 @@ fn create() -> Result<(), error::ThumbnailError> {
         &config.metas.title,
         &config.metas.username,
         config.design.get_rgba_background_color(),
+        config.design.get_rgba_box_color(),
         config.design.get_rgba_font_color(),
         &font,
     )?;
