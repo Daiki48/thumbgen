@@ -12,22 +12,26 @@ pub struct Metas {
 
 #[derive(serde::Deserialize)]
 pub struct Design {
-    pub background_color: [u8; 4],
-    pub box_color: [u8; 4],
-    pub font_color: [u8; 4],
+    pub background_color: Option<[u8; 4]>,
+    pub box_color: Option<[u8; 4]>,
+    pub font_color: Option<[u8; 4]>,
 }
 
 impl Design {
     pub fn get_rgba_background_color(&self) -> image::Rgba<u8> {
-        image::Rgba(self.background_color)
+        let default_background_color: image::Rgba<u8> = image::Rgba([34, 39, 46, 255]);
+        self.background_color
+            .map_or(default_background_color, image::Rgba)
     }
 
     pub fn get_rgba_box_color(&self) -> image::Rgba<u8> {
-        image::Rgba(self.box_color)
+        let default_box_color: image::Rgba<u8> = image::Rgba([55, 63, 74, 255]);
+        self.box_color.map_or(default_box_color, image::Rgba)
     }
 
     pub fn get_rgba_font_color(&self) -> image::Rgba<u8> {
-        image::Rgba(self.font_color)
+        let default_font_color: image::Rgba<u8> = image::Rgba([202, 204, 202, 255]);
+        self.font_color.map_or(default_font_color, image::Rgba)
     }
 }
 
