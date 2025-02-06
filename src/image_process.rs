@@ -3,7 +3,6 @@ pub const BACKGROUND_HEIGHT_SIZE: u32 = 630;
 
 pub const BOX_WIDTH_SIZE: u32 = 1140;
 pub const BOX_HEIGHT_SIZE: u32 = 600;
-pub const BOX_COLOR: image::Rgba<u8> = image::Rgba([55, 63, 74, 255]);
 
 pub const TITLE_FONT_SIZE: f32 = 52.0;
 pub const USERNAME_FONT_SIZE: f32 = 38.0;
@@ -14,6 +13,7 @@ pub fn generate_thumbnail(
     title: &str,
     username: &str,
     background_color: image::Rgba<u8>,
+    box_color: image::Rgba<u8>,
     font_color: image::Rgba<u8>,
     font: &ab_glyph::FontRef,
 ) -> Result<(), crate::error::ThumbnailError> {
@@ -42,7 +42,7 @@ pub fn generate_thumbnail(
     imageproc::drawing::draw_filled_rect_mut(
         &mut img,
         imageproc::rect::Rect::at(box_position_x, box_position_y).of_size(box_width, box_height),
-        BOX_COLOR,
+        box_color,
     );
 
     let title_scale = ab_glyph::PxScale::from(TITLE_FONT_SIZE);

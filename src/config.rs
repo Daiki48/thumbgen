@@ -13,12 +13,17 @@ pub struct Metas {
 #[derive(serde::Deserialize)]
 pub struct Design {
     pub background_color: [u8; 4],
+    pub box_color: [u8; 4],
     pub font_color: [u8; 4],
 }
 
 impl Design {
     pub fn get_rgba_background_color(&self) -> image::Rgba<u8> {
         image::Rgba(self.background_color)
+    }
+
+    pub fn get_rgba_box_color(&self) -> image::Rgba<u8> {
+        image::Rgba(self.box_color)
     }
 
     pub fn get_rgba_font_color(&self) -> image::Rgba<u8> {
@@ -36,6 +41,7 @@ username = 'Daiki48'
 
 [design]
 background_color = [34, 39, 46, 255]
+box_color = [55, 63, 74, 255]
 font_color = [202, 204, 202, 255]
 "#;
 
