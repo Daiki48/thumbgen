@@ -1,11 +1,11 @@
 #[derive(serde::Deserialize)]
 pub struct Config {
-    pub metas: Metas,
+    pub meta: Meta,
     pub design: Design,
 }
 
 #[derive(serde::Deserialize)]
-pub struct Metas {
+pub struct Meta {
     pub title: String,
     pub username: String,
 }
@@ -39,7 +39,7 @@ pub const OUTPUT_DIR: &str = ".thumbgen";
 pub const TOML_DEFAULT: &str = r#"
 # This config is setup for thumbgen
 
-[metas]
+[meta]
 title = 'Hello. I love Rust language. Rust is best for programming. I writing Rust at thumbgen. My Github username is Daiki48.'
 username = 'Daiki48'
 
