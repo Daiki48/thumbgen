@@ -1,6 +1,6 @@
 [package]
 name = "thumbgen"
-version = "0.5.0"
+version = "0.6.0"
 edition = "2021"
 authors = ["Daiki Nakashima <daiki48.engineer@gmail.com>"]
 description = "Thumbnail generate tool"
