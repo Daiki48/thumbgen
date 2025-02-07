@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check for Release label
+        id: check_label
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          args: |
+            const { data: pullRequests } = await github.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'closed',
+              head: context.ref,
+            });
+
+            const pr = pullRequests.find(pr => pr.merge_commit_sha === context.sha);
+
+            if (!pr || !pr.labels.some(label => label.name === 'release')) {
+              core.setFailed('PR does not have Release label');
+            }
+
+      - name: Generate changelog
+        if: success()
+        uses: triat/markdown-badges@1.2
+        with:
+          changelog: |
+            exclude:
+              labels:
+                - ignore-for-release
+            categories:
+              - title: 🛠 Breaking Changes
+                labels:
+                  - Semver-Major
+                  - breaking-change
+              - title: 🎉 Exciting New Features
+                labels:
+                  - Semver-Minor
+                  - enhancement
+              - title: 🐛 Bug fixed
+                labels:
+                  - Semver-Minor
+                  - bug
+              - title: Other Changes
+                labels:
+                  - "*"
