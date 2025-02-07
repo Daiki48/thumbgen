@@ -41,8 +41,8 @@ fn create() -> Result<(), error::ThumbnailError> {
     let font = font::load_font()?;
 
     image_process::generate_thumbnail(
-        &config.metas.title,
-        &config.metas.username,
+        &config.meta.title,
+        &config.meta.username,
         config.design.get_rgba_background_color(),
         config.design.get_rgba_box_color(),
         config.design.get_rgba_font_color(),
